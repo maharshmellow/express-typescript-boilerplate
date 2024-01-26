@@ -1,9 +1,13 @@
 import { Request, Response } from "express";
+import axios from "axios";
 
 const Ping = {
-  get: (req: Request, res: Response) => {
+  get: async (req: Request, res: Response) => {
     if (req.params.id) {
-      res.send(`GET - pong ${req.params.id}`);
+      const response = await axios.get(
+        `https://jsonplaceholder.typicode.com/posts/${req.params.id}`
+      );
+      res.json(response.data);
     } else {
       res.send("GET - pong");
     }
