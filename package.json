@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon index.ts --watch",
-    "build:run": "tsc && node dist/index.js"
+    "build:run": "NODE_ENV=production tsc && node dist/index.js",
+    "docker:build": "docker build . -t express-typescript-boilerplate",
+    "docker:run": "docker run --restart=always -d -p 3000:3000 express-typescript-boilerplate"
   },
   "dependencies": {
     "axios": "^1.6.7",
